@@ -1,0 +1,28 @@
+<div class="buttons-wrapper">
+  <!-- <a href="/" class="logo">TextHub </a> -->
+
+  <div class="buttons">
+    <a href="/new" class="btn"><img src="/new.png" alt="" srcset=""> New</a>
+    <% if (locals.canSave) { %>
+      <button class="btn" type="submit"><img src="/save.png" alt="Save"> Save</button>
+    <% } %>
+    <% if (locals.id != null) { %>
+      <a href="/<%= locals.id %>/duplicate" class="btn">Duplicate</a>
+      <button class="btn" value="Copy Url" onclick="Copy()" type="submit"><img src="/save.png" alt="Save"> Copy Link</button>
+    <% } %>
+  </div>
+
+</div>
+
+<script>
+  function Copy(text) {
+    var inputc = document.body.appendChild(document.createElement("input"));
+    inputc.value = window.location.href;
+    inputc.focus();
+    inputc.select();
+    document.execCommand('copy');
+    inputc.parentNode.removeChild(inputc);
+    alert("URL Copied.");
+
+}
+</script>
